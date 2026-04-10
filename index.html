@@ -7,6 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
   :root {
     --bg: #F4F0E8;
     --surface: #FDFBF7;
@@ -19,6 +20,7 @@
     --mono: 'DM Mono', monospace;
     --serif: 'DM Serif Display', serif;
   }
+
   body {
     font-family: var(--mono);
     background: var(--bg);
@@ -27,11 +29,26 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
     padding: 3rem 1.5rem 4rem;
   }
+
   header { text-align: center; margin-bottom: 2.5rem; }
-  header h1 { font-family: var(--serif); font-size: 2.8rem; font-weight: 400; letter-spacing: -0.5px; color: var(--text); line-height: 1.1; }
-  header p { font-size: 0.78rem; color: var(--muted); margin-top: 0.5rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  header h1 {
+    font-family: var(--serif);
+    font-size: 2.8rem;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    color: var(--text);
+    line-height: 1.1;
+  }
+  header p {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 0.5rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
 
   .card {
     background: var(--surface);
@@ -39,13 +56,13 @@
     border-radius: var(--radius);
     padding: 2rem;
     width: 100%;
-    max-width: 580px;
+    max-width: 560px;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
   }
 
-  .field > label:first-child {
+  .field label {
     display: block;
     font-size: 0.72rem;
     letter-spacing: 0.1em;
@@ -53,6 +70,7 @@
     color: var(--muted);
     margin-bottom: 0.5rem;
   }
+
   .field input[type="text"] {
     width: 100%;
     padding: 0.65rem 0.9rem;
@@ -67,111 +85,177 @@
   }
   .field input[type="text"]:focus { border-color: var(--accent); }
 
-  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
 
-  .color-row { display: flex; align-items: center; gap: 0.75rem; }
+  .color-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
   .color-row input[type="color"] {
-    width: 40px; height: 40px;
-    border: 1px solid var(--border); border-radius: 8px;
-    padding: 3px; background: var(--bg); cursor: pointer; flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 3px;
+    background: var(--bg);
+    cursor: pointer;
+    flex-shrink: 0;
   }
   .color-row input[type="text"] {
-    flex: 1; padding: 0.6rem 0.75rem;
-    font-family: var(--mono); font-size: 0.88rem;
-    border: 1px solid var(--border); border-radius: 8px;
-    background: var(--bg); color: var(--text);
-    outline: none; text-transform: uppercase;
+    flex: 1;
+    padding: 0.6rem 0.75rem;
+    font-family: var(--mono);
+    font-size: 0.88rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg);
+    color: var(--text);
+    outline: none;
+    text-transform: uppercase;
   }
   .color-row input[type="text"]:focus { border-color: var(--accent); }
 
   .checkbox-row {
-    display: flex; align-items: center; gap: 0.5rem;
-    cursor: pointer; user-select: none; margin-top: 0.55rem;
-  }
-  .checkbox-row input[type="checkbox"] { width: 15px; height: 15px; accent-color: var(--accent); cursor: pointer; flex-shrink: 0; }
-  .checkbox-row span { font-size: 0.74rem; color: var(--muted); letter-spacing: 0.03em; }
-  .checkbox-row span strong { color: var(--accent-dark); font-weight: 500; }
-
-  /* Shape picker */
-  .shape-section { display: flex; flex-direction: column; gap: 1rem; }
-  .shape-group > .shape-group-label {
-    font-size: 0.72rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 0.5rem;
-    display: block;
-  }
-  .shape-grid {
     display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-  .shape-opt {
-    width: 44px; height: 44px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    background: var(--bg);
+    align-items: center;
+    gap: 0.5rem;
     cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    transition: border-color 0.12s, background 0.12s;
-    padding: 5px;
+    user-select: none;
+    margin-top: 0.55rem;
   }
-  .shape-opt:hover { border-color: var(--accent); background: #EEF4F5; }
-  .shape-opt.selected { border: 2px solid var(--accent); background: #EEF4F5; }
-  .shape-opt svg { width: 30px; height: 30px; }
+  .checkbox-row input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    accent-color: var(--accent);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .checkbox-row span {
+    font-size: 0.74rem;
+    color: var(--muted);
+    letter-spacing: 0.03em;
+  }
+  .checkbox-row span strong {
+    color: var(--accent-dark);
+    font-weight: 500;
+  }
 
   .upload-zone {
-    border: 1.5px dashed var(--border); border-radius: 8px; padding: 1.2rem;
-    text-align: center; cursor: pointer;
+    border: 1.5px dashed var(--border);
+    border-radius: 8px;
+    padding: 1.2rem;
+    text-align: center;
+    cursor: pointer;
     transition: border-color 0.15s, background 0.15s;
-    position: relative; background: var(--bg);
+    position: relative;
+    background: var(--bg);
   }
   .upload-zone:hover { border-color: var(--accent); background: #EEF4F5; }
-  .upload-zone input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+  .upload-zone input[type="file"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+  }
   .upload-zone p { font-size: 0.78rem; color: var(--muted); pointer-events: none; }
   .upload-zone p span { color: var(--accent-dark); font-weight: 500; }
   #upload-name { font-size: 0.75rem; color: var(--accent-dark); margin-top: 0.4rem; }
 
-  .logo-size-row { display: flex; align-items: center; gap: 0.75rem; margin-top: 0.5rem; }
-  .logo-size-row label { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+  .logo-size-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+  .logo-size-row label {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+  }
   .logo-size-row input[type="range"] { flex: 1; accent-color: var(--accent); }
   .logo-size-row span { font-size: 0.8rem; color: var(--muted); min-width: 32px; text-align: right; }
 
   .btn-generate {
-    width: 100%; padding: 0.85rem;
-    font-family: var(--mono); font-size: 0.88rem;
-    letter-spacing: 0.08em; text-transform: uppercase;
-    background: var(--text); color: var(--bg);
-    border: none; border-radius: 8px; cursor: pointer;
+    width: 100%;
+    padding: 0.85rem;
+    font-family: var(--mono);
+    font-size: 0.88rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--text);
+    color: var(--bg);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
     transition: background 0.15s, transform 0.1s;
   }
   .btn-generate:hover { background: #3D342C; }
   .btn-generate:active { transform: scale(0.99); }
 
-  .output-section { display: none; flex-direction: column; align-items: center; gap: 1rem; margin-top: 0.5rem; }
+  .output-section {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
   .output-section.visible { display: flex; }
 
   #qr-canvas {
-    border-radius: 10px; border: 1px solid var(--border); display: block;
-    background-image: linear-gradient(45deg,#ccc 25%,transparent 25%),linear-gradient(-45deg,#ccc 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#ccc 75%),linear-gradient(-45deg,transparent 75%,#ccc 75%);
-    background-size: 12px 12px; background-position: 0 0,0 6px,6px -6px,-6px 0; background-color: #eee;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    display: block;
+    background-image: linear-gradient(45deg, #ccc 25%, transparent 25%),
+                      linear-gradient(-45deg, #ccc 25%, transparent 25%),
+                      linear-gradient(45deg, transparent 75%, #ccc 75%),
+                      linear-gradient(-45deg, transparent 75%, #ccc 75%);
+    background-size: 12px 12px;
+    background-position: 0 0, 0 6px, 6px -6px, -6px 0px;
+    background-color: #eee;
   }
 
-  .download-row { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; }
+  .download-row {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
   .btn-download {
-    padding: 0.65rem 1.5rem; font-family: var(--mono); font-size: 0.8rem;
-    letter-spacing: 0.08em; text-transform: uppercase;
-    background: transparent; color: var(--text);
-    border: 1px solid var(--border); border-radius: 8px; cursor: pointer;
+    padding: 0.65rem 1.5rem;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
     transition: background 0.15s, border-color 0.15s;
   }
   .btn-download:hover { background: var(--bg); border-color: var(--accent); color: var(--accent-dark); }
+
   .btn-download-large {
-    padding: 0.65rem 1.5rem; font-family: var(--mono); font-size: 0.8rem;
-    letter-spacing: 0.08em; text-transform: uppercase;
-    background: var(--accent); color: #fff;
-    border: 1px solid var(--accent-dark); border-radius: 8px; cursor: pointer;
+    padding: 0.65rem 1.5rem;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--accent);
+    color: #fff;
+    border: 1px solid var(--accent-dark);
+    border-radius: 8px;
+    cursor: pointer;
     transition: background 0.15s;
   }
   .btn-download-large:hover { background: var(--accent-dark); }
@@ -179,7 +263,13 @@
   .hint { font-size: 0.72rem; color: var(--muted); text-align: center; }
   .error { font-size: 0.78rem; color: #B05050; display: none; }
 
-  footer { margin-top: 3rem; font-size: 0.7rem; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+  footer {
+    margin-top: 3rem;
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
 </style>
 </head>
 <body>
@@ -200,11 +290,11 @@
     <div class="field">
       <label>QR Color</label>
       <div class="color-row">
-        <input type="color" id="color-picker" value="#000000" />
-        <input type="text" id="color-hex" value="#000000" maxlength="7" />
+        <input type="color" id="color-picker" value="#8EA9AD" />
+        <input type="text" id="color-hex" value="#8EA9AD" maxlength="7" />
       </div>
       <label class="checkbox-row">
-        <input type="checkbox" id="map-colors" />
+        <input type="checkbox" id="map-colors" checked />
         <span><strong>MAP Colors</strong> &mdash; #8EA9AD</span>
       </label>
     </div>
@@ -219,26 +309,6 @@
         <span>Transparent background</span>
       </label>
     </div>
-  </div>
-
-  <!-- Shape pickers -->
-  <div class="shape-section">
-
-    <div class="shape-group">
-      <span class="shape-group-label">Body Shape</span>
-      <div class="shape-grid" id="body-grid"></div>
-    </div>
-
-    <div class="shape-group">
-      <span class="shape-group-label">Eye Frame Shape</span>
-      <div class="shape-grid" id="frame-grid"></div>
-    </div>
-
-    <div class="shape-group">
-      <span class="shape-group-label">Eye Ball Shape</span>
-      <div class="shape-grid" id="ball-grid"></div>
-    </div>
-
   </div>
 
   <div class="field">
@@ -256,6 +326,7 @@
   </div>
 
   <p class="error" id="qr-error"></p>
+
   <button class="btn-generate" onclick="generate()">Generate QR Code</button>
 
   <div class="output-section" id="output">
@@ -273,74 +344,12 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
-const MAP_COLOR = '#8EA9AD';
 const PADDING = 28;
 const QR_SIZE = 280;
+const MAP_COLOR = '#8EA9AD';
+
 let logoDataURL = null;
-let selectedBody = 'square';
-let selectedFrame = 'square';
-let selectedBall = 'square';
 
-// ── Shape definitions ─────────────────────────────────────────────────────────
-// Each shape: { id, label, svgPath }  (preview rendered at 30x30)
-
-const BODY_SHAPES = [
-  { id: 'square',     label: 'Square',       svgPath: `<rect x="2" y="2" width="26" height="26"/>` },
-  { id: 'dot',        label: 'Dot',          svgPath: `<circle cx="15" cy="15" r="13"/>` },
-  { id: 'rounded',    label: 'Rounded',      svgPath: `<rect x="2" y="2" width="26" height="26" rx="7"/>` },
-  { id: 'extra-rounded', label: 'Pill',      svgPath: `<rect x="2" y="2" width="26" height="26" rx="13"/>` },
-  { id: 'diamond',    label: 'Diamond',      svgPath: `<polygon points="15,2 28,15 15,28 2,15"/>` },
-  { id: 'star',       label: 'Star',         svgPath: `<polygon points="15,2 18,11 28,11 20,17 23,27 15,21 7,27 10,17 2,11 12,11"/>` },
-  { id: 'cross',      label: 'Cross',        svgPath: `<polygon points="10,2 20,2 20,10 28,10 28,20 20,20 20,28 10,28 10,20 2,20 2,10 10,10"/>` },
-  { id: 'leaf',       label: 'Leaf',         svgPath: `<path d="M2,2 Q28,2 28,28 Q2,28 2,2Z"/>` },
-  { id: 'vertical-bar', label: 'V-Bar',      svgPath: `<rect x="9" y="2" width="12" height="26"/>` },
-  { id: 'horizontal-bar', label: 'H-Bar',   svgPath: `<rect x="2" y="9" width="26" height="12"/>` },
-  { id: 'random-round', label: 'Blob',       svgPath: `<path d="M15,2 C22,2 28,6 28,13 C28,22 22,28 15,28 C8,28 2,22 2,15 C2,8 8,2 15,2Z"/>` },
-];
-
-const FRAME_SHAPES = [
-  { id: 'square',       label: 'Square',      svgPath: `<rect x="2" y="2" width="26" height="26" fill="none" stroke="black" stroke-width="3"/>` },
-  { id: 'rounded',      label: 'Rounded',     svgPath: `<rect x="2" y="2" width="26" height="26" rx="5" fill="none" stroke="black" stroke-width="3"/>` },
-  { id: 'extra-rounded',label: 'More Round',  svgPath: `<rect x="2" y="2" width="26" height="26" rx="10" fill="none" stroke="black" stroke-width="3"/>` },
-  { id: 'circle',       label: 'Circle',      svgPath: `<circle cx="15" cy="15" r="13" fill="none" stroke="black" stroke-width="3"/>` },
-  { id: 'rounded-in',   label: 'Inner Round', svgPath: `<path d="M2,8 Q2,2 8,2 L22,2 Q28,2 28,8 L28,22 Q28,28 22,28 L8,28 Q2,28 2,22Z" fill="none" stroke="black" stroke-width="3"/>` },
-  { id: 'dotted',       label: 'Dotted',      svgPath: `<rect x="2" y="2" width="26" height="26" fill="none" stroke="black" stroke-width="3" stroke-dasharray="3,2"/>` },
-  { id: 'thick',        label: 'Thick',       svgPath: `<rect x="2" y="2" width="26" height="26" fill="none" stroke="black" stroke-width="6"/>` },
-];
-
-const BALL_SHAPES = [
-  { id: 'square',       label: 'Square',      svgPath: `<rect x="5" y="5" width="20" height="20"/>` },
-  { id: 'rounded',      label: 'Rounded',     svgPath: `<rect x="5" y="5" width="20" height="20" rx="5"/>` },
-  { id: 'extra-rounded',label: 'More Round',  svgPath: `<rect x="5" y="5" width="20" height="20" rx="10"/>` },
-  { id: 'circle',       label: 'Circle',      svgPath: `<circle cx="15" cy="15" r="10"/>` },
-  { id: 'diamond',      label: 'Diamond',     svgPath: `<polygon points="15,5 25,15 15,25 5,15"/>` },
-  { id: 'star',         label: 'Star',        svgPath: `<polygon points="15,5 17,12 25,12 19,17 21,24 15,19 9,24 11,17 5,12 13,12"/>` },
-  { id: 'leaf',         label: 'Leaf',        svgPath: `<path d="M5,5 Q25,5 25,25 Q5,25 5,5Z"/>` },
-  { id: 'cross',        label: 'Cross',       svgPath: `<polygon points="11,5 19,5 19,11 25,11 25,19 19,19 19,25 11,25 11,19 5,19 5,11 11,11"/>` },
-];
-
-// ── Build shape picker grids ──────────────────────────────────────────────────
-function buildGrid(containerId, shapes, selectedId, onSelect) {
-  const grid = document.getElementById(containerId);
-  shapes.forEach(shape => {
-    const el = document.createElement('div');
-    el.className = 'shape-opt' + (shape.id === selectedId ? ' selected' : '');
-    el.title = shape.label;
-    el.innerHTML = `<svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">${shape.svgPath}</svg>`;
-    el.addEventListener('click', () => {
-      grid.querySelectorAll('.shape-opt').forEach(e => e.classList.remove('selected'));
-      el.classList.add('selected');
-      onSelect(shape.id);
-    });
-    grid.appendChild(el);
-  });
-}
-
-buildGrid('body-grid',  BODY_SHAPES,  selectedBody,  id => { selectedBody  = id; });
-buildGrid('frame-grid', FRAME_SHAPES, selectedFrame, id => { selectedFrame = id; });
-buildGrid('ball-grid',  BALL_SHAPES,  selectedBall,  id => { selectedBall  = id; });
-
-// ── Color sync ────────────────────────────────────────────────────────────────
 function isValidHex(h) { return /^#[0-9A-Fa-f]{6}$/.test(h); }
 
 function syncColor(pickerId, hexId, onchange) {
@@ -398,327 +407,101 @@ function getColor(hexId, pickerId) {
   return isValidHex(h) ? h : document.getElementById(pickerId).value;
 }
 
-// ── QR rendering ──────────────────────────────────────────────────────────────
-// We use qrcodejs to get the raw bit matrix, then draw it ourselves with custom shapes.
-
-function getQRMatrix(text) {
-  return new Promise((resolve) => {
-    const tempDiv = document.createElement('div');
-    tempDiv.style.cssText = 'position:absolute;visibility:hidden;left:-9999px;';
-    document.body.appendChild(tempDiv);
-    new QRCode(tempDiv, {
-      text,
-      width: 200, height: 200,
-      colorDark: '#000000', colorLight: '#ffffff',
-      correctLevel: QRCode.CorrectLevel.H
-    });
-    setTimeout(() => {
-      const srcCanvas = tempDiv.querySelector('canvas');
-      const srcImg = tempDiv.querySelector('img');
-      const draw = (source) => {
-        // Read pixel matrix from rendered QR
-        const size = 200;
-        const off = document.createElement('canvas');
-        off.width = size; off.height = size;
-        const octx = off.getContext('2d');
-        octx.drawImage(source, 0, 0, size, size);
-        const imgData = octx.getImageData(0, 0, size, size);
-        const d = imgData.data;
-        // Detect module size by scanning top row for first dark pixel run
-        let moduleSize = 0;
-        let inRun = false;
-        let runStart = 0;
-        for (let x = 0; x < size; x++) {
-          const idx = x * 4;
-          const dark = d[idx] < 128;
-          if (dark && !inRun) { inRun = true; runStart = x; }
-          if (!dark && inRun) { moduleSize = x - runStart; break; }
-        }
-        if (!moduleSize) moduleSize = 4;
-        const modules = Math.round(size / moduleSize);
-        const matrix = [];
-        for (let row = 0; row < modules; row++) {
-          matrix[row] = [];
-          for (let col = 0; col < modules; col++) {
-            const px = Math.floor(col * moduleSize + moduleSize / 2);
-            const py = Math.floor(row * moduleSize + moduleSize / 2);
-            const idx = (py * size + px) * 4;
-            matrix[row][col] = d[idx] < 128 ? 1 : 0;
-          }
-        }
-        document.body.removeChild(tempDiv);
-        resolve({ matrix, modules });
-      };
-      if (srcCanvas) draw(srcCanvas);
-      else if (srcImg && srcImg.src) {
-        const img = new Image(); img.onload = () => draw(img); img.src = srcImg.src;
-      } else { document.body.removeChild(tempDiv); resolve(null); }
-    }, 150);
-  });
-}
-
-// Identify finder pattern locations (top-left, top-right, bottom-left)
-function isFinderModule(row, col, modules) {
-  const end = modules - 1;
-  // 7x7 finder zones
-  return (row < 7 && col < 7) ||
-         (row < 7 && col > end - 7) ||
-         (row > end - 7 && col < 7);
-}
-
-// Identify eye-ball center (3x3 inner square of finder)
-function isEyeBall(row, col, modules) {
-  const end = modules - 1;
-  return (row >= 2 && row <= 4 && col >= 2 && col <= 4) ||
-         (row >= 2 && row <= 4 && col >= end - 4 && col <= end - 2) ||
-         (row >= end - 4 && row <= end - 2 && col >= 2 && col <= 4);
-}
-
-// Eye frame = finder - eyeball - separator
-function isEyeFrame(row, col, modules) {
-  const end = modules - 1;
-  if (!isFinderModule(row, col, modules)) return false;
-  if (isEyeBall(row, col, modules)) return false;
-  return true;
-}
-
-function drawModule(ctx, shape, x, y, size, color) {
-  ctx.fillStyle = color;
-  const s = size;
-  const cx = x + s / 2, cy = y + s / 2, r = s / 2;
-  ctx.beginPath();
-  switch (shape) {
-    case 'dot':
-    case 'circle':
-      ctx.arc(cx, cy, r * 0.9, 0, Math.PI * 2);
-      break;
-    case 'rounded':
-      roundRect(ctx, x + 0.5, y + 0.5, s - 1, s - 1, s * 0.25);
-      break;
-    case 'extra-rounded':
-      roundRect(ctx, x + 0.5, y + 0.5, s - 1, s - 1, s * 0.45);
-      break;
-    case 'diamond':
-      ctx.moveTo(cx, y); ctx.lineTo(x + s, cy); ctx.lineTo(cx, y + s); ctx.lineTo(x, cy);
-      break;
-    case 'star': {
-      const outerR = r * 0.95, innerR = r * 0.45, points = 5;
-      for (let i = 0; i < points * 2; i++) {
-        const angle = (i * Math.PI) / points - Math.PI / 2;
-        const rr = i % 2 === 0 ? outerR : innerR;
-        i === 0 ? ctx.moveTo(cx + rr * Math.cos(angle), cy + rr * Math.sin(angle))
-                : ctx.lineTo(cx + rr * Math.cos(angle), cy + rr * Math.sin(angle));
-      }
-      break;
-    }
-    case 'leaf':
-      ctx.moveTo(x, y); ctx.quadraticCurveTo(x + s, y, x + s, y + s); ctx.quadraticCurveTo(x, y + s, x, y);
-      break;
-    case 'vertical-bar':
-      ctx.rect(x + s * 0.2, y, s * 0.6, s);
-      break;
-    case 'horizontal-bar':
-      ctx.rect(x, y + s * 0.2, s, s * 0.6);
-      break;
-    case 'cross': {
-      const t = s * 0.3;
-      ctx.rect(x + t, y, s - 2*t, s);
-      ctx.rect(x, y + t, s, s - 2*t);
-      break;
-    }
-    default: // square
-      ctx.rect(x, y, s, s);
-  }
-  ctx.fill();
-}
-
-function drawEyeFrame(ctx, shape, ox, oy, moduleSize, color) {
-  // Draw 7x7 finder frame as a single shape
-  const outer = 7 * moduleSize;
-  const inner = 5 * moduleSize;
-  const inset = moduleSize;
-  ctx.fillStyle = color;
-  ctx.beginPath();
-  switch (shape) {
-    case 'rounded':
-      roundRectPath(ctx, ox, oy, outer, outer, moduleSize * 1.5);
-      ctx.arc(ox + inset + inner / 2, oy + inset + inner / 2, inner / 2 - 0.5, 0, Math.PI * 2, true);
-      break;
-    case 'extra-rounded':
-      roundRectPath(ctx, ox, oy, outer, outer, moduleSize * 2.5);
-      roundRectPath(ctx, ox + inset, oy + inset, inner, inner, moduleSize * 1.5, true);
-      break;
-    case 'circle':
-      ctx.arc(ox + outer / 2, oy + outer / 2, outer / 2, 0, Math.PI * 2);
-      ctx.arc(ox + outer / 2, oy + outer / 2, inner / 2, 0, Math.PI * 2, true);
-      break;
-    case 'rounded-in':
-      squarePath(ctx, ox, oy, outer);
-      roundRectPath(ctx, ox + inset, oy + inset, inner, inner, moduleSize, true);
-      break;
-    case 'dotted':
-    case 'thick': {
-      // render as normal square frame
-      squarePath(ctx, ox, oy, outer);
-      squarePath(ctx, ox + inset, oy + inset, inner, true);
-      break;
-    }
-    default: // square
-      squarePath(ctx, ox, oy, outer);
-      squarePath(ctx, ox + inset, oy + inset, inner, true);
-  }
-  ctx.fill('evenodd');
-}
-
-function drawEyeBall(ctx, shape, ox, oy, moduleSize, color) {
-  const size = 3 * moduleSize;
-  const cx = ox + size / 2, cy = oy + size / 2;
-  ctx.fillStyle = color;
-  ctx.beginPath();
-  switch (shape) {
-    case 'circle':
-      ctx.arc(cx, cy, size / 2 * 0.9, 0, Math.PI * 2);
-      break;
-    case 'rounded':
-      roundRectPath(ctx, ox, oy, size, size, moduleSize * 0.8);
-      break;
-    case 'extra-rounded':
-      roundRectPath(ctx, ox, oy, size, size, moduleSize * 1.5);
-      break;
-    case 'diamond':
-      ctx.moveTo(cx, oy); ctx.lineTo(ox + size, cy); ctx.lineTo(cx, oy + size); ctx.lineTo(ox, cy);
-      break;
-    case 'star': {
-      const r = size / 2, ir = r * 0.45, pts = 5;
-      for (let i = 0; i < pts * 2; i++) {
-        const a = (i * Math.PI) / pts - Math.PI / 2;
-        const rr = i % 2 === 0 ? r * 0.95 : ir;
-        i === 0 ? ctx.moveTo(cx + rr * Math.cos(a), cy + rr * Math.sin(a))
-                : ctx.lineTo(cx + rr * Math.cos(a), cy + rr * Math.sin(a));
-      }
-      break;
-    }
-    case 'leaf':
-      ctx.moveTo(ox, oy); ctx.quadraticCurveTo(ox + size, oy, ox + size, oy + size); ctx.quadraticCurveTo(ox, oy + size, ox, oy);
-      break;
-    case 'cross': {
-      const t = size * 0.28;
-      ctx.rect(ox + t, oy, size - 2*t, size);
-      ctx.rect(ox, oy + t, size, size - 2*t);
-      break;
-    }
-    default:
-      ctx.rect(ox, oy, size, size);
-  }
-  ctx.fill();
-}
-
-// Path helpers
-function roundRect(ctx, x, y, w, h, r) {
-  ctx.moveTo(x + r, y);
-  ctx.lineTo(x + w - r, y); ctx.quadraticCurveTo(x + w, y, x + w, y + r);
-  ctx.lineTo(x + w, y + h - r); ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
-  ctx.lineTo(x + r, y + h); ctx.quadraticCurveTo(x, y + h, x, y + h - r);
-  ctx.lineTo(x, y + r); ctx.quadraticCurveTo(x, y, x + r, y);
-}
-function roundRectPath(ctx, x, y, w, h, r, ccw = false) {
-  if (ccw) {
-    ctx.moveTo(x + r, y);
-    ctx.quadraticCurveTo(x, y, x, y + r);
-    ctx.lineTo(x, y + h - r); ctx.quadraticCurveTo(x, y + h, x + r, y + h);
-    ctx.lineTo(x + w - r, y + h); ctx.quadraticCurveTo(x + w, y + h, x + w, y + h - r);
-    ctx.lineTo(x + w, y + r); ctx.quadraticCurveTo(x + w, y, x + w - r, y);
-    ctx.lineTo(x + r, y);
-  } else {
-    ctx.moveTo(x + r, y);
-    ctx.lineTo(x + w - r, y); ctx.quadraticCurveTo(x + w, y, x + w, y + r);
-    ctx.lineTo(x + w, y + h - r); ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
-    ctx.lineTo(x + r, y + h); ctx.quadraticCurveTo(x, y + h, x, y + h - r);
-    ctx.lineTo(x, y + r); ctx.quadraticCurveTo(x, y, x + r, y);
-  }
-}
-function squarePath(ctx, x, y, s, ccw = false) {
-  if (ccw) { ctx.moveTo(x, y); ctx.lineTo(x, y + s); ctx.lineTo(x + s, y + s); ctx.lineTo(x + s, y); ctx.closePath(); }
-  else { ctx.moveTo(x, y); ctx.lineTo(x + s, y); ctx.lineTo(x + s, y + s); ctx.lineTo(x, y + s); ctx.closePath(); }
-}
-
-async function renderToCanvas(scale, callback) {
+function renderToCanvas(scale, callback) {
   const qrSize = QR_SIZE * scale;
   const padding = PADDING * scale;
   const total = qrSize + padding * 2;
-  const darkColor = getColor('color-hex', 'color-picker');
-  const isTransparent = document.getElementById('transparent-bg').checked;
-  const lightColor = isTransparent ? 'rgba(0,0,0,0)' : getColor('bg-hex', 'bg-picker');
-
-  const result = await getQRMatrix(window._qrText);
-  if (!result) { callback(null); return; }
-  const { matrix, modules } = result;
 
   const canvas = document.createElement('canvas');
-  canvas.width = total; canvas.height = total;
+  canvas.width = total;
+  canvas.height = total;
   const ctx = canvas.getContext('2d');
 
-  // Background
-  if (!isTransparent) { ctx.fillStyle = lightColor; ctx.fillRect(0, 0, total, total); }
+  const darkColor = getColor('color-hex', 'color-picker');
+  const isTransparent = document.getElementById('transparent-bg').checked;
+  const lightColor = isTransparent ? '#ffffff' : getColor('bg-hex', 'bg-picker');
+  const bgFill = isTransparent ? 'rgba(0,0,0,0)' : lightColor;
 
-  const modSize = qrSize / modules;
-  const end = modules - 1;
+  const tempDiv = document.createElement('div');
+  tempDiv.style.cssText = 'position:absolute;visibility:hidden;left:-9999px;';
+  document.body.appendChild(tempDiv);
 
-  // Finder corner origins [row, col]
-  const finderOrigins = [[0,0],[0,end-6],[end-6,0]];
-
-  // Draw body modules (skip finder zones)
-  for (let row = 0; row < modules; row++) {
-    for (let col = 0; col < modules; col++) {
-      if (isFinderModule(row, col, modules)) continue;
-      if (matrix[row][col]) {
-        const x = padding + col * modSize;
-        const y = padding + row * modSize;
-        drawModule(ctx, selectedBody, x, y, modSize, darkColor);
-      }
-    }
+  try {
+    new QRCode(tempDiv, {
+      text: window._qrText,
+      width: qrSize,
+      height: qrSize,
+      colorDark: darkColor,
+      colorLight: lightColor,
+      correctLevel: QRCode.CorrectLevel.H
+    });
+  } catch(e) {
+    document.body.removeChild(tempDiv);
+    return;
   }
 
-  // Draw eye frames
-  finderOrigins.forEach(([fr, fc]) => {
-    const ox = padding + fc * modSize;
-    const oy = padding + fr * modSize;
-    drawEyeFrame(ctx, selectedFrame, ox, oy, modSize, darkColor);
-  });
+  setTimeout(() => {
+    const srcCanvas = tempDiv.querySelector('canvas');
+    const srcImg = tempDiv.querySelector('img');
 
-  // Draw eye balls
-  const ballOrigins = [[2,2],[2,end-4],[end-4,2]];
-  ballOrigins.forEach(([fr, fc]) => {
-    const ox = padding + fc * modSize;
-    const oy = padding + fr * modSize;
-    drawEyeBall(ctx, selectedBall, ox, oy, modSize, darkColor);
-  });
-
-  // Separator rows (clear finder separators that may have leaked)
-  // (handled by skipping all finder modules above)
-
-  // Logo overlay
-  if (logoDataURL) {
-    const pct = parseInt(document.getElementById('logo-size').value) / 100;
-    const logoSize = Math.round(qrSize * pct);
-    const lx = padding + (qrSize - logoSize) / 2;
-    const ly = padding + (qrSize - logoSize) / 2;
-    const img = new Image();
-    img.onload = () => {
+    const draw = (source) => {
       if (!isTransparent) {
-        const pad = 6 * scale;
-        ctx.fillStyle = lightColor;
-        ctx.beginPath();
-        roundRect(ctx, lx - pad, ly - pad, logoSize + pad*2, logoSize + pad*2, 6 * scale);
-        ctx.fill();
+        ctx.fillStyle = bgFill;
+        ctx.fillRect(0, 0, total, total);
+        ctx.drawImage(source, padding, padding, qrSize, qrSize);
+      } else {
+        // Render QR to offscreen canvas, then punch out white pixels
+        const offscreen = document.createElement('canvas');
+        offscreen.width = qrSize;
+        offscreen.height = qrSize;
+        const octx = offscreen.getContext('2d');
+        octx.fillStyle = '#ffffff';
+        octx.fillRect(0, 0, qrSize, qrSize);
+        octx.drawImage(source, 0, 0, qrSize, qrSize);
+        const imgData = octx.getImageData(0, 0, qrSize, qrSize);
+        const d = imgData.data;
+        for (let i = 0; i < d.length; i += 4) {
+          if (d[i] > 200 && d[i+1] > 200 && d[i+2] > 200) d[i+3] = 0;
+        }
+        octx.putImageData(imgData, 0, 0);
+        ctx.drawImage(offscreen, padding, padding, qrSize, qrSize);
       }
-      ctx.drawImage(img, lx, ly, logoSize, logoSize);
-      callback(canvas);
+
+      if (logoDataURL) {
+        const pct = parseInt(document.getElementById('logo-size').value) / 100;
+        const logoSize = Math.round(qrSize * pct);
+        const lx = padding + (qrSize - logoSize) / 2;
+        const ly = padding + (qrSize - logoSize) / 2;
+        const img = new Image();
+        img.onload = () => {
+          if (!isTransparent) {
+            const pad = 6 * scale;
+            ctx.fillStyle = bgFill;
+            ctx.beginPath();
+            ctx.roundRect(lx - pad, ly - pad, logoSize + pad*2, logoSize + pad*2, 6 * scale);
+            ctx.fill();
+          }
+          ctx.drawImage(img, lx, ly, logoSize, logoSize);
+          document.body.removeChild(tempDiv);
+          callback(canvas);
+        };
+        img.src = logoDataURL;
+      } else {
+        document.body.removeChild(tempDiv);
+        callback(canvas);
+      }
     };
-    img.src = logoDataURL;
-  } else {
-    callback(canvas);
-  }
+
+    if (srcCanvas) {
+      draw(srcCanvas);
+    } else if (srcImg && srcImg.src) {
+      const img = new Image();
+      img.onload = () => draw(img);
+      img.src = srcImg.src;
+    } else {
+      document.body.removeChild(tempDiv);
+    }
+  }, 150);
 }
 
 function generate() {
@@ -730,14 +513,20 @@ function generate() {
   err.style.display = 'none';
   output.classList.remove('visible');
 
-  if (!val) { err.textContent = 'Please enter a URL or text first.'; err.style.display = 'block'; return; }
+  if (!val) {
+    err.textContent = 'Please enter a URL or text first.';
+    err.style.display = 'block';
+    return;
+  }
+
   window._qrText = val;
 
   renderToCanvas(1, (canvas) => {
-    if (!canvas) { err.textContent = 'Could not generate QR code.'; err.style.display = 'block'; return; }
     displayCanvas.width = canvas.width;
     displayCanvas.height = canvas.height;
-    displayCanvas.getContext('2d').drawImage(canvas, 0, 0);
+    const ctx = displayCanvas.getContext('2d');
+    ctx.clearRect(0, 0, displayCanvas.width, displayCanvas.height);
+    ctx.drawImage(canvas, 0, 0);
     output.classList.add('visible');
   });
 }
@@ -745,11 +534,12 @@ function generate() {
 function downloadQR(scale) {
   if (!window._qrText) return;
   renderToCanvas(scale, (canvas) => {
-    if (!canvas) return;
     const a = document.createElement('a');
     a.download = scale > 1 ? 'qrcode-large.png' : 'qrcode.png';
     a.href = canvas.toDataURL('image/png');
-    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   });
 }
 </script>
