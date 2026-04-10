@@ -33,11 +33,7 @@
     padding: 3rem 1.5rem 4rem;
   }
 
-  header {
-    text-align: center;
-    margin-bottom: 2.5rem;
-  }
-
+  header { text-align: center; margin-bottom: 2.5rem; }
   header h1 {
     font-family: var(--serif);
     font-size: 2.8rem;
@@ -46,7 +42,6 @@
     color: var(--text);
     line-height: 1.1;
   }
-
   header p {
     font-size: 0.78rem;
     color: var(--muted);
@@ -76,8 +71,7 @@
     margin-bottom: 0.5rem;
   }
 
-  .field input[type="text"],
-  .field input[type="url"] {
+  .field input[type="text"] {
     width: 100%;
     padding: 0.65rem 0.9rem;
     font-family: var(--mono);
@@ -89,11 +83,7 @@
     outline: none;
     transition: border-color 0.15s;
   }
-
-  .field input[type="text"]:focus,
-  .field input[type="url"]:focus {
-    border-color: var(--accent);
-  }
+  .field input[type="text"]:focus { border-color: var(--accent); }
 
   .row {
     display: grid;
@@ -106,7 +96,6 @@
     align-items: center;
     gap: 0.75rem;
   }
-
   .color-row input[type="color"] {
     width: 40px;
     height: 40px;
@@ -117,7 +106,6 @@
     cursor: pointer;
     flex-shrink: 0;
   }
-
   .color-row input[type="text"] {
     flex: 1;
     padding: 0.6rem 0.75rem;
@@ -130,9 +118,31 @@
     outline: none;
     text-transform: uppercase;
   }
+  .color-row input[type="text"]:focus { border-color: var(--accent); }
 
-  .color-row input[type="text"]:focus {
-    border-color: var(--accent);
+  .checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    user-select: none;
+    margin-top: 0.55rem;
+  }
+  .checkbox-row input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    accent-color: var(--accent);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .checkbox-row span {
+    font-size: 0.74rem;
+    color: var(--muted);
+    letter-spacing: 0.03em;
+  }
+  .checkbox-row span strong {
+    color: var(--accent-dark);
+    font-weight: 500;
   }
 
   .upload-zone {
@@ -145,12 +155,7 @@
     position: relative;
     background: var(--bg);
   }
-
-  .upload-zone:hover {
-    border-color: var(--accent);
-    background: #EEF4F5;
-  }
-
+  .upload-zone:hover { border-color: var(--accent); background: #EEF4F5; }
   .upload-zone input[type="file"] {
     position: absolute;
     inset: 0;
@@ -159,23 +164,9 @@
     width: 100%;
     height: 100%;
   }
-
-  .upload-zone p {
-    font-size: 0.78rem;
-    color: var(--muted);
-    pointer-events: none;
-  }
-
-  .upload-zone p span {
-    color: var(--accent-dark);
-    font-weight: 500;
-  }
-
-  #upload-name {
-    font-size: 0.75rem;
-    color: var(--accent-dark);
-    margin-top: 0.4rem;
-  }
+  .upload-zone p { font-size: 0.78rem; color: var(--muted); pointer-events: none; }
+  .upload-zone p span { color: var(--accent-dark); font-weight: 500; }
+  #upload-name { font-size: 0.75rem; color: var(--accent-dark); margin-top: 0.4rem; }
 
   .logo-size-row {
     display: flex;
@@ -183,7 +174,6 @@
     gap: 0.75rem;
     margin-top: 0.5rem;
   }
-
   .logo-size-row label {
     font-size: 0.72rem;
     letter-spacing: 0.08em;
@@ -191,18 +181,8 @@
     color: var(--muted);
     white-space: nowrap;
   }
-
-  .logo-size-row input[type="range"] {
-    flex: 1;
-    accent-color: var(--accent);
-  }
-
-  .logo-size-row span {
-    font-size: 0.8rem;
-    color: var(--muted);
-    min-width: 32px;
-    text-align: right;
-  }
+  .logo-size-row input[type="range"] { flex: 1; accent-color: var(--accent); }
+  .logo-size-row span { font-size: 0.8rem; color: var(--muted); min-width: 32px; text-align: right; }
 
   .btn-generate {
     width: 100%;
@@ -218,7 +198,6 @@
     cursor: pointer;
     transition: background 0.15s, transform 0.1s;
   }
-
   .btn-generate:hover { background: #3D342C; }
   .btn-generate:active { transform: scale(0.99); }
 
@@ -229,13 +208,26 @@
     gap: 1rem;
     margin-top: 0.5rem;
   }
-
   .output-section.visible { display: flex; }
 
   #qr-canvas {
     border-radius: 10px;
     border: 1px solid var(--border);
     display: block;
+    background-image: linear-gradient(45deg, #ccc 25%, transparent 25%),
+                      linear-gradient(-45deg, #ccc 25%, transparent 25%),
+                      linear-gradient(45deg, transparent 75%, #ccc 75%),
+                      linear-gradient(-45deg, transparent 75%, #ccc 75%);
+    background-size: 12px 12px;
+    background-position: 0 0, 0 6px, 6px -6px, -6px 0px;
+    background-color: #eee;
+  }
+
+  .download-row {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .btn-download {
@@ -251,24 +243,25 @@
     cursor: pointer;
     transition: background 0.15s, border-color 0.15s;
   }
+  .btn-download:hover { background: var(--bg); border-color: var(--accent); color: var(--accent-dark); }
 
-  .btn-download:hover {
-    background: var(--bg);
-    border-color: var(--accent);
-    color: var(--accent-dark);
+  .btn-download-large {
+    padding: 0.65rem 1.5rem;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--accent);
+    color: #fff;
+    border: 1px solid var(--accent-dark);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s;
   }
+  .btn-download-large:hover { background: var(--accent-dark); }
 
-  .hint {
-    font-size: 0.72rem;
-    color: var(--muted);
-    text-align: center;
-  }
-
-  .error {
-    font-size: 0.78rem;
-    color: #B05050;
-    display: none;
-  }
+  .hint { font-size: 0.72rem; color: var(--muted); text-align: center; }
+  .error { font-size: 0.78rem; color: #B05050; display: none; }
 
   footer {
     margin-top: 3rem;
@@ -300,13 +293,21 @@
         <input type="color" id="color-picker" value="#8EA9AD" />
         <input type="text" id="color-hex" value="#8EA9AD" maxlength="7" />
       </div>
+      <label class="checkbox-row">
+        <input type="checkbox" id="map-colors" checked />
+        <span><strong>MAP Colors</strong> &mdash; #8EA9AD</span>
+      </label>
     </div>
     <div class="field">
       <label>Background</label>
-      <div class="color-row">
+      <div class="color-row" id="bg-color-row">
         <input type="color" id="bg-picker" value="#ffffff" />
         <input type="text" id="bg-hex" value="#FFFFFF" maxlength="7" />
       </div>
+      <label class="checkbox-row">
+        <input type="checkbox" id="transparent-bg" />
+        <span>Transparent background</span>
+      </label>
     </div>
   </div>
 
@@ -330,7 +331,10 @@
 
   <div class="output-section" id="output">
     <canvas id="qr-canvas"></canvas>
-    <button class="btn-download" onclick="downloadQR()">Download PNG</button>
+    <div class="download-row">
+      <button class="btn-download" onclick="downloadQR(1)">Download PNG</button>
+      <button class="btn-download-large" onclick="downloadQR(4)">Download Large PNG</button>
+    </div>
     <p class="hint">Or right-click the QR code above and choose "Save image as..."</p>
   </div>
 
@@ -342,25 +346,44 @@
 <script>
 const PADDING = 28;
 const QR_SIZE = 280;
-const TOTAL = QR_SIZE + PADDING * 2;
+const MAP_COLOR = '#8EA9AD';
 
 let logoDataURL = null;
 
 function isValidHex(h) { return /^#[0-9A-Fa-f]{6}$/.test(h); }
 
-function syncColor(picker, hexInput) {
+function syncColor(pickerId, hexId, onchange) {
+  const picker = document.getElementById(pickerId);
+  const hex = document.getElementById(hexId);
   picker.addEventListener('input', () => {
-    hexInput.value = picker.value.toUpperCase();
+    hex.value = picker.value.toUpperCase();
+    if (onchange) onchange(hex.value);
   });
-  hexInput.addEventListener('input', () => {
-    const v = hexInput.value.startsWith('#') ? hexInput.value : '#' + hexInput.value;
+  hex.addEventListener('input', () => {
+    let v = hex.value.startsWith('#') ? hex.value : '#' + hex.value;
     if (isValidHex(v)) picker.value = v;
-    hexInput.value = hexInput.value.toUpperCase();
+    hex.value = hex.value.toUpperCase();
+    if (onchange) onchange(hex.value);
   });
 }
 
-syncColor(document.getElementById('color-picker'), document.getElementById('color-hex'));
-syncColor(document.getElementById('bg-picker'), document.getElementById('bg-hex'));
+syncColor('color-picker', 'color-hex', (val) => {
+  document.getElementById('map-colors').checked = (val === MAP_COLOR);
+});
+syncColor('bg-picker', 'bg-hex', null);
+
+document.getElementById('map-colors').addEventListener('change', function() {
+  if (this.checked) {
+    document.getElementById('color-picker').value = MAP_COLOR;
+    document.getElementById('color-hex').value = MAP_COLOR;
+  }
+});
+
+document.getElementById('transparent-bg').addEventListener('change', function() {
+  const row = document.getElementById('bg-color-row');
+  row.style.opacity = this.checked ? '0.35' : '1';
+  row.style.pointerEvents = this.checked ? 'none' : '';
+});
 
 document.getElementById('logo-input').addEventListener('change', function() {
   const file = this.files[0];
@@ -384,11 +407,108 @@ function getColor(hexId, pickerId) {
   return isValidHex(h) ? h : document.getElementById(pickerId).value;
 }
 
+function renderToCanvas(scale, callback) {
+  const qrSize = QR_SIZE * scale;
+  const padding = PADDING * scale;
+  const total = qrSize + padding * 2;
+
+  const canvas = document.createElement('canvas');
+  canvas.width = total;
+  canvas.height = total;
+  const ctx = canvas.getContext('2d');
+
+  const darkColor = getColor('color-hex', 'color-picker');
+  const isTransparent = document.getElementById('transparent-bg').checked;
+  const lightColor = isTransparent ? '#ffffff' : getColor('bg-hex', 'bg-picker');
+  const bgFill = isTransparent ? 'rgba(0,0,0,0)' : lightColor;
+
+  const tempDiv = document.createElement('div');
+  tempDiv.style.cssText = 'position:absolute;visibility:hidden;left:-9999px;';
+  document.body.appendChild(tempDiv);
+
+  try {
+    new QRCode(tempDiv, {
+      text: window._qrText,
+      width: qrSize,
+      height: qrSize,
+      colorDark: darkColor,
+      colorLight: lightColor,
+      correctLevel: QRCode.CorrectLevel.H
+    });
+  } catch(e) {
+    document.body.removeChild(tempDiv);
+    return;
+  }
+
+  setTimeout(() => {
+    const srcCanvas = tempDiv.querySelector('canvas');
+    const srcImg = tempDiv.querySelector('img');
+
+    const draw = (source) => {
+      if (!isTransparent) {
+        ctx.fillStyle = bgFill;
+        ctx.fillRect(0, 0, total, total);
+        ctx.drawImage(source, padding, padding, qrSize, qrSize);
+      } else {
+        // Render QR to offscreen canvas, then punch out white pixels
+        const offscreen = document.createElement('canvas');
+        offscreen.width = qrSize;
+        offscreen.height = qrSize;
+        const octx = offscreen.getContext('2d');
+        octx.fillStyle = '#ffffff';
+        octx.fillRect(0, 0, qrSize, qrSize);
+        octx.drawImage(source, 0, 0, qrSize, qrSize);
+        const imgData = octx.getImageData(0, 0, qrSize, qrSize);
+        const d = imgData.data;
+        for (let i = 0; i < d.length; i += 4) {
+          if (d[i] > 200 && d[i+1] > 200 && d[i+2] > 200) d[i+3] = 0;
+        }
+        octx.putImageData(imgData, 0, 0);
+        ctx.drawImage(offscreen, padding, padding, qrSize, qrSize);
+      }
+
+      if (logoDataURL) {
+        const pct = parseInt(document.getElementById('logo-size').value) / 100;
+        const logoSize = Math.round(qrSize * pct);
+        const lx = padding + (qrSize - logoSize) / 2;
+        const ly = padding + (qrSize - logoSize) / 2;
+        const img = new Image();
+        img.onload = () => {
+          if (!isTransparent) {
+            const pad = 6 * scale;
+            ctx.fillStyle = bgFill;
+            ctx.beginPath();
+            ctx.roundRect(lx - pad, ly - pad, logoSize + pad*2, logoSize + pad*2, 6 * scale);
+            ctx.fill();
+          }
+          ctx.drawImage(img, lx, ly, logoSize, logoSize);
+          document.body.removeChild(tempDiv);
+          callback(canvas);
+        };
+        img.src = logoDataURL;
+      } else {
+        document.body.removeChild(tempDiv);
+        callback(canvas);
+      }
+    };
+
+    if (srcCanvas) {
+      draw(srcCanvas);
+    } else if (srcImg && srcImg.src) {
+      const img = new Image();
+      img.onload = () => draw(img);
+      img.src = srcImg.src;
+    } else {
+      document.body.removeChild(tempDiv);
+    }
+  }, 150);
+}
+
 function generate() {
   const val = document.getElementById('qr-input').value.trim();
   const err = document.getElementById('qr-error');
   const output = document.getElementById('output');
-  const canvas = document.getElementById('qr-canvas');
+  const displayCanvas = document.getElementById('qr-canvas');
 
   err.style.display = 'none';
   output.classList.remove('visible');
@@ -399,86 +519,28 @@ function generate() {
     return;
   }
 
-  const darkColor = getColor('color-hex', 'color-picker');
-  const lightColor = getColor('bg-hex', 'bg-picker');
+  window._qrText = val;
 
-  canvas.width = TOTAL;
-  canvas.height = TOTAL;
-
-  const tempDiv = document.createElement('div');
-  tempDiv.style.cssText = 'position:absolute;visibility:hidden;left:-9999px;';
-  document.body.appendChild(tempDiv);
-
-  try {
-    new QRCode(tempDiv, {
-      text: val,
-      width: QR_SIZE,
-      height: QR_SIZE,
-      colorDark: darkColor,
-      colorLight: lightColor,
-      correctLevel: QRCode.CorrectLevel.H
-    });
-
-    setTimeout(() => {
-      const srcCanvas = tempDiv.querySelector('canvas');
-      const srcImg = tempDiv.querySelector('img');
-
-      const draw = (source) => {
-        const ctx = canvas.getContext('2d');
-        ctx.fillStyle = lightColor;
-        ctx.fillRect(0, 0, TOTAL, TOTAL);
-        ctx.drawImage(source, PADDING, PADDING, QR_SIZE, QR_SIZE);
-
-        if (logoDataURL) {
-          const pct = parseInt(document.getElementById('logo-size').value) / 100;
-          const logoSize = Math.round(QR_SIZE * pct);
-          const lx = PADDING + (QR_SIZE - logoSize) / 2;
-          const ly = PADDING + (QR_SIZE - logoSize) / 2;
-          const img = new Image();
-          img.onload = () => {
-            const pad = 6;
-            ctx.fillStyle = lightColor;
-            ctx.beginPath();
-            ctx.roundRect(lx - pad, ly - pad, logoSize + pad*2, logoSize + pad*2, 6);
-            ctx.fill();
-            ctx.drawImage(img, lx, ly, logoSize, logoSize);
-            document.body.removeChild(tempDiv);
-            output.classList.add('visible');
-          };
-          img.src = logoDataURL;
-        } else {
-          document.body.removeChild(tempDiv);
-          output.classList.add('visible');
-        }
-      };
-
-      if (srcCanvas) {
-        draw(srcCanvas);
-      } else if (srcImg && srcImg.src) {
-        const img = new Image();
-        img.onload = () => draw(img);
-        img.src = srcImg.src;
-      } else {
-        document.body.removeChild(tempDiv);
-        err.textContent = 'Could not render QR code.';
-        err.style.display = 'block';
-      }
-    }, 150);
-  } catch(e) {
-    document.body.removeChild(tempDiv);
-    err.textContent = 'Could not generate QR code. Text may be too long.';
-    err.style.display = 'block';
-  }
+  renderToCanvas(1, (canvas) => {
+    displayCanvas.width = canvas.width;
+    displayCanvas.height = canvas.height;
+    const ctx = displayCanvas.getContext('2d');
+    ctx.clearRect(0, 0, displayCanvas.width, displayCanvas.height);
+    ctx.drawImage(canvas, 0, 0);
+    output.classList.add('visible');
+  });
 }
 
-function downloadQR() {
-  const canvas = document.getElementById('qr-canvas');
-  const a = document.createElement('a');
-  a.download = 'qrcode.png';
-  a.href = canvas.toDataURL('image/png');
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
+function downloadQR(scale) {
+  if (!window._qrText) return;
+  renderToCanvas(scale, (canvas) => {
+    const a = document.createElement('a');
+    a.download = scale > 1 ? 'qrcode-large.png' : 'qrcode.png';
+    a.href = canvas.toDataURL('image/png');
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  });
 }
 </script>
 </body>
