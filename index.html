@@ -7,269 +7,64 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --bg: #F4F0E8;
-    --surface: #FDFBF7;
-    --border: #D8D2C4;
-    --text: #2A2520;
-    --muted: #8A837A;
-    --accent: #8EA9AD;
-    --accent-dark: #5C7F84;
-    --radius: 12px;
-    --mono: 'DM Mono', monospace;
-    --serif: 'DM Serif Display', serif;
+    --bg: #F4F0E8; --surface: #FDFBF7; --border: #D8D2C4;
+    --text: #2A2520; --muted: #8A837A; --accent: #8EA9AD;
+    --accent-dark: #5C7F84; --radius: 12px;
+    --mono: 'DM Mono', monospace; --serif: 'DM Serif Display', serif;
   }
-
-  body {
-    font-family: var(--mono);
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 3rem 1.5rem 4rem;
-  }
-
+  body { font-family: var(--mono); background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 3rem 1.5rem 4rem; }
   header { text-align: center; margin-bottom: 2.5rem; }
-  header h1 {
-    font-family: var(--serif);
-    font-size: 2.8rem;
-    font-weight: 400;
-    letter-spacing: -0.5px;
-    color: var(--text);
-    line-height: 1.1;
-  }
-  header p {
-    font-size: 0.78rem;
-    color: var(--muted);
-    margin-top: 0.5rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 2rem;
-    width: 100%;
-    max-width: 560px;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .field label {
-    display: block;
-    font-size: 0.72rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 0.5rem;
-  }
-
-  .field input[type="text"] {
-    width: 100%;
-    padding: 0.65rem 0.9rem;
-    font-family: var(--mono);
-    font-size: 0.88rem;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    background: var(--bg);
-    color: var(--text);
-    outline: none;
-    transition: border-color 0.15s;
-  }
+  header h1 { font-family: var(--serif); font-size: 2.8rem; font-weight: 400; letter-spacing: -0.5px; color: var(--text); line-height: 1.1; }
+  header p { font-size: 0.78rem; color: var(--muted); margin-top: 0.5rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; width: 100%; max-width: 580px; display: flex; flex-direction: column; gap: 1.5rem; }
+  .field > label:first-child { display: block; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; }
+  .field input[type="text"] { width: 100%; padding: 0.65rem 0.9rem; font-family: var(--mono); font-size: 0.88rem; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); color: var(--text); outline: none; transition: border-color 0.15s; }
   .field input[type="text"]:focus { border-color: var(--accent); }
-
-  .row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-  }
-
-  .color-row {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-  .color-row input[type="color"] {
-    width: 40px;
-    height: 40px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 3px;
-    background: var(--bg);
-    cursor: pointer;
-    flex-shrink: 0;
-  }
-  .color-row input[type="text"] {
-    flex: 1;
-    padding: 0.6rem 0.75rem;
-    font-family: var(--mono);
-    font-size: 0.88rem;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    background: var(--bg);
-    color: var(--text);
-    outline: none;
-    text-transform: uppercase;
-  }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .color-row { display: flex; align-items: center; gap: 0.75rem; }
+  .color-row input[type="color"] { width: 40px; height: 40px; border: 1px solid var(--border); border-radius: 8px; padding: 3px; background: var(--bg); cursor: pointer; flex-shrink: 0; }
+  .color-row input[type="text"] { flex: 1; padding: 0.6rem 0.75rem; font-family: var(--mono); font-size: 0.88rem; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); color: var(--text); outline: none; text-transform: uppercase; }
   .color-row input[type="text"]:focus { border-color: var(--accent); }
+  .checkbox-row { display: flex; align-items: center; gap: 0.5rem; cursor: pointer; user-select: none; margin-top: 0.55rem; }
+  .checkbox-row input[type="checkbox"] { width: 15px; height: 15px; accent-color: var(--accent); cursor: pointer; flex-shrink: 0; }
+  .checkbox-row span { font-size: 0.74rem; color: var(--muted); letter-spacing: 0.03em; }
+  .checkbox-row span strong { color: var(--accent-dark); font-weight: 500; }
 
-  .checkbox-row {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    cursor: pointer;
-    user-select: none;
-    margin-top: 0.55rem;
-  }
-  .checkbox-row input[type="checkbox"] {
-    width: 15px;
-    height: 15px;
-    accent-color: var(--accent);
-    cursor: pointer;
-    flex-shrink: 0;
-  }
-  .checkbox-row span {
-    font-size: 0.74rem;
-    color: var(--muted);
-    letter-spacing: 0.03em;
-  }
-  .checkbox-row span strong {
-    color: var(--accent-dark);
-    font-weight: 500;
-  }
+  /* Shape pickers */
+  .shape-section { display: flex; flex-direction: column; gap: 1.2rem; }
+  .shape-group-label { display: block; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; }
+  .shape-grid { display: flex; flex-wrap: wrap; gap: 6px; }
+  .shape-opt { width: 46px; height: 46px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: border-color 0.12s, background 0.12s; padding: 5px; flex-shrink: 0; }
+  .shape-opt:hover { border-color: var(--accent); background: #EEF4F5; }
+  .shape-opt.selected { border: 2px solid var(--accent); background: #EEF4F5; }
+  .shape-opt svg { width: 32px; height: 32px; overflow: visible; }
 
-  .upload-zone {
-    border: 1.5px dashed var(--border);
-    border-radius: 8px;
-    padding: 1.2rem;
-    text-align: center;
-    cursor: pointer;
-    transition: border-color 0.15s, background 0.15s;
-    position: relative;
-    background: var(--bg);
-  }
+  .upload-zone { border: 1.5px dashed var(--border); border-radius: 8px; padding: 1.2rem; text-align: center; cursor: pointer; transition: border-color 0.15s, background 0.15s; position: relative; background: var(--bg); }
   .upload-zone:hover { border-color: var(--accent); background: #EEF4F5; }
-  .upload-zone input[type="file"] {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    cursor: pointer;
-    width: 100%;
-    height: 100%;
-  }
+  .upload-zone input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
   .upload-zone p { font-size: 0.78rem; color: var(--muted); pointer-events: none; }
   .upload-zone p span { color: var(--accent-dark); font-weight: 500; }
   #upload-name { font-size: 0.75rem; color: var(--accent-dark); margin-top: 0.4rem; }
-
-  .logo-size-row {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-top: 0.5rem;
-  }
-  .logo-size-row label {
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--muted);
-    white-space: nowrap;
-  }
+  .logo-size-row { display: flex; align-items: center; gap: 0.75rem; margin-top: 0.5rem; }
+  .logo-size-row label { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
   .logo-size-row input[type="range"] { flex: 1; accent-color: var(--accent); }
   .logo-size-row span { font-size: 0.8rem; color: var(--muted); min-width: 32px; text-align: right; }
 
-  .btn-generate {
-    width: 100%;
-    padding: 0.85rem;
-    font-family: var(--mono);
-    font-size: 0.88rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    background: var(--text);
-    color: var(--bg);
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.15s, transform 0.1s;
-  }
+  .btn-generate { width: 100%; padding: 0.85rem; font-family: var(--mono); font-size: 0.88rem; letter-spacing: 0.08em; text-transform: uppercase; background: var(--text); color: var(--bg); border: none; border-radius: 8px; cursor: pointer; transition: background 0.15s, transform 0.1s; }
   .btn-generate:hover { background: #3D342C; }
   .btn-generate:active { transform: scale(0.99); }
-
-  .output-section {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 0.5rem;
-  }
+  .output-section { display: none; flex-direction: column; align-items: center; gap: 1rem; margin-top: 0.5rem; }
   .output-section.visible { display: flex; }
-
-  #qr-canvas {
-    border-radius: 10px;
-    border: 1px solid var(--border);
-    display: block;
-    background-image: linear-gradient(45deg, #ccc 25%, transparent 25%),
-                      linear-gradient(-45deg, #ccc 25%, transparent 25%),
-                      linear-gradient(45deg, transparent 75%, #ccc 75%),
-                      linear-gradient(-45deg, transparent 75%, #ccc 75%);
-    background-size: 12px 12px;
-    background-position: 0 0, 0 6px, 6px -6px, -6px 0px;
-    background-color: #eee;
-  }
-
-  .download-row {
-    display: flex;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .btn-download {
-    padding: 0.65rem 1.5rem;
-    font-family: var(--mono);
-    font-size: 0.8rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    background: transparent;
-    color: var(--text);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.15s, border-color 0.15s;
-  }
+  #qr-canvas { border-radius: 10px; border: 1px solid var(--border); display: block; background-image: linear-gradient(45deg,#ccc 25%,transparent 25%),linear-gradient(-45deg,#ccc 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#ccc 75%),linear-gradient(-45deg,transparent 75%,#ccc 75%); background-size: 12px 12px; background-position: 0 0,0 6px,6px -6px,-6px 0; background-color: #eee; }
+  .download-row { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; }
+  .btn-download { padding: 0.65rem 1.5rem; font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; background: transparent; color: var(--text); border: 1px solid var(--border); border-radius: 8px; cursor: pointer; transition: background 0.15s, border-color 0.15s; }
   .btn-download:hover { background: var(--bg); border-color: var(--accent); color: var(--accent-dark); }
-
-  .btn-download-large {
-    padding: 0.65rem 1.5rem;
-    font-family: var(--mono);
-    font-size: 0.8rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    background: var(--accent);
-    color: #fff;
-    border: 1px solid var(--accent-dark);
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.15s;
-  }
+  .btn-download-large { padding: 0.65rem 1.5rem; font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; background: var(--accent); color: #fff; border: 1px solid var(--accent-dark); border-radius: 8px; cursor: pointer; transition: background 0.15s; }
   .btn-download-large:hover { background: var(--accent-dark); }
-
   .hint { font-size: 0.72rem; color: var(--muted); text-align: center; }
   .error { font-size: 0.78rem; color: #B05050; display: none; }
-
-  footer {
-    margin-top: 3rem;
-    font-size: 0.7rem;
-    color: var(--muted);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
+  footer { margin-top: 3rem; font-size: 0.7rem; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
 </style>
 </head>
 <body>
@@ -290,11 +85,11 @@
     <div class="field">
       <label>QR Color</label>
       <div class="color-row">
-        <input type="color" id="color-picker" value="#8EA9AD" />
-        <input type="text" id="color-hex" value="#8EA9AD" maxlength="7" />
+        <input type="color" id="color-picker" value="#000000" />
+        <input type="text" id="color-hex" value="#000000" maxlength="7" />
       </div>
       <label class="checkbox-row">
-        <input type="checkbox" id="map-colors" checked />
+        <input type="checkbox" id="map-colors" />
         <span><strong>MAP Colors</strong> &mdash; #8EA9AD</span>
       </label>
     </div>
@@ -308,6 +103,22 @@
         <input type="checkbox" id="transparent-bg" />
         <span>Transparent background</span>
       </label>
+    </div>
+  </div>
+
+  <!-- Shape Pickers -->
+  <div class="shape-section">
+    <div>
+      <span class="shape-group-label">Pattern (Body)</span>
+      <div class="shape-grid" id="pattern-grid"></div>
+    </div>
+    <div>
+      <span class="shape-group-label">Marker (Eye Frame)</span>
+      <div class="shape-grid" id="marker-grid"></div>
+    </div>
+    <div>
+      <span class="shape-group-label">Marker Inner (Eye Ball)</span>
+      <div class="shape-grid" id="marker-in-grid"></div>
     </div>
   </div>
 
@@ -326,7 +137,6 @@
   </div>
 
   <p class="error" id="qr-error"></p>
-
   <button class="btn-generate" onclick="generate()">Generate QR Code</button>
 
   <div class="output-section" id="output">
@@ -342,23 +152,212 @@
 
 <footer>Spengeman Family Personal Tool</footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<!-- qrcode-generator exposes raw module matrix -->
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
 <script>
+const MAP_COLOR = '#8EA9AD';
 const PADDING = 28;
 const QR_SIZE = 280;
-const MAP_COLOR = '#8EA9AD';
-
 let logoDataURL = null;
+let selPattern = 'default';
+let selMarker  = 'default';
+let selMarkerIn = 'default';
 
+// ─── SVG icon builders for pickers ───────────────────────────────────────────
+// Each returns an SVG string for the 32x32 preview icon
+
+function iconSquare() {
+  return `<rect x="4" y="4" width="24" height="24" fill="currentColor"/>`;
+}
+function iconCircle(cx=16,cy=16,r=12) {
+  return `<circle cx="${cx}" cy="${cy}" r="${r}" fill="currentColor"/>`;
+}
+function iconRounded(rx=5) {
+  return `<rect x="4" y="4" width="24" height="24" rx="${rx}" fill="currentColor"/>`;
+}
+function iconDiamond() {
+  return `<polygon points="16,3 29,16 16,29 3,16" fill="currentColor"/>`;
+}
+function iconStar(pts=5,or=12,ir=5,cx=16,cy=16) {
+  let d='';
+  for(let i=0;i<pts*2;i++){
+    const a=(i*Math.PI/pts)-Math.PI/2;
+    const r=i%2===0?or:ir;
+    d+=(i===0?'M':'L')+(cx+r*Math.cos(a)).toFixed(2)+','+(cy+r*Math.sin(a)).toFixed(2);
+  }
+  return `<path d="${d}Z" fill="currentColor"/>`;
+}
+function iconCross() {
+  return `<polygon points="11,4 21,4 21,11 28,11 28,21 21,21 21,28 11,28 11,21 4,21 4,11 11,11" fill="currentColor"/>`;
+}
+function iconPlus() {
+  return `<rect x="12" y="4" width="8" height="24" fill="currentColor"/><rect x="4" y="12" width="24" height="8" fill="currentColor"/>`;
+}
+function iconX() {
+  return `<line x1="4" y1="4" x2="28" y2="28" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><line x1="28" y1="4" x2="4" y2="28" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>`;
+}
+function iconHeart() {
+  return `<path d="M16,27 C16,27 4,19 4,11 C4,7 7,4 11,5 C13,5.5 15,7 16,9 C17,7 19,5.5 21,5 C25,4 28,7 28,11 C28,19 16,27 16,27Z" fill="currentColor"/>`;
+}
+function iconBlob() {
+  return `<path d="M16,4 C22,4 28,8 28,14 C28,20 24,28 16,28 C8,28 4,20 4,14 C4,8 10,4 16,4Z" fill="currentColor"/>`;
+}
+function iconEllipse() {
+  return `<ellipse cx="16" cy="16" rx="12" ry="8" fill="currentColor"/>`;
+}
+function iconDiamond2() {
+  return `<rect x="8" y="8" width="16" height="16" transform="rotate(45 16 16)" fill="currentColor"/>`;
+}
+function iconSparkle() {
+  return iconStar(4,13,5,16,16);
+}
+function iconDanger() {
+  return `<polygon points="16,3 30,28 2,28" fill="currentColor"/>`;
+}
+function iconRibbon() {
+  return `<path d="M4,4 L28,4 L28,20 L16,28 L4,20Z" fill="currentColor"/>`;
+}
+function iconOriental() {
+  return `<rect x="4" y="4" width="10" height="10" rx="2" fill="currentColor"/><rect x="18" y="4" width="10" height="10" rx="2" fill="currentColor"/><rect x="4" y="18" width="10" height="10" rx="2" fill="currentColor"/><rect x="18" y="18" width="10" height="10" rx="2" fill="currentColor"/>`;
+}
+function iconShake() {
+  return `<rect x="4" y="4" width="24" height="24" rx="4" fill="currentColor" transform="rotate(15 16 16)"/>`;
+}
+function iconSpecCircle() {
+  return `<circle cx="16" cy="16" r="12" fill="none" stroke="currentColor" stroke-width="5"/><circle cx="16" cy="16" r="4" fill="currentColor"/>`;
+}
+function iconSpecDiamond() {
+  return `<polygon points="16,3 29,16 16,29 3,16" fill="none" stroke="currentColor" stroke-width="4"/><polygon points="16,9 23,16 16,23 9,16" fill="currentColor"/>`;
+}
+
+// Marker (eye frame) icons — show as frame outlines
+function iconFrameSquare() {
+  return `<rect x="3" y="3" width="26" height="26" fill="none" stroke="currentColor" stroke-width="4"/>`;
+}
+function iconFrameRounded() {
+  return `<rect x="3" y="3" width="26" height="26" rx="5" fill="none" stroke="currentColor" stroke-width="4"/>`;
+}
+function iconFrameCircle() {
+  return `<circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="4"/>`;
+}
+function iconFrameDrop() {
+  return `<path d="M16,3 C22,3 28,8 28,14 C28,22 16,29 16,29 C16,29 4,22 4,14 C4,8 10,3 16,3Z" fill="none" stroke="currentColor" stroke-width="3"/>`;
+}
+function iconFrameLeaf() {
+  return `<path d="M3,3 Q29,3 29,29 Q3,29 3,3Z" fill="none" stroke="currentColor" stroke-width="3"/>`;
+}
+function iconFrameFlower() {
+  let p='';
+  for(let i=0;i<8;i++){
+    const a=i*Math.PI/4;
+    const bx=16+10*Math.cos(a), by=16+10*Math.sin(a);
+    p+=`<circle cx="${bx.toFixed(1)}" cy="${by.toFixed(1)}" r="5" fill="currentColor" opacity="0.9"/>`;
+  }
+  return p+`<circle cx="16" cy="16" r="5" fill="none" stroke="currentColor" stroke-width="3"/>`;
+}
+function iconFrameFlurry() {
+  return iconStar(6,13,8,16,16)+`<circle cx="16" cy="16" r="4" fill="none" stroke="currentColor" stroke-width="2"/>`;
+}
+function iconFrameSdoz() {
+  return `<rect x="3" y="3" width="26" height="26" rx="13" fill="none" stroke="currentColor" stroke-width="4"/>`;
+}
+function iconFrameSquareCircle() {
+  return `<rect x="3" y="3" width="26" height="26" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="16" cy="16" r="6" fill="currentColor"/>`;
+}
+function iconFrameDropEye() {
+  return `<path d="M16,3 C22,3 28,9 28,16 C28,23 22,29 16,29 C10,29 4,23 4,16 C4,9 10,3 16,3Z" fill="none" stroke="currentColor" stroke-width="3"/><ellipse cx="16" cy="16" rx="5" ry="7" fill="currentColor"/>`;
+}
+
+// Marker inner icons — solid fills
+function iconBallSun() {
+  let r='';
+  for(let i=0;i<8;i++){
+    const a=i*Math.PI/4;
+    r+=`<line x1="${(16+7*Math.cos(a)).toFixed(1)}" y1="${(16+7*Math.sin(a)).toFixed(1)}" x2="${(16+12*Math.cos(a)).toFixed(1)}" y2="${(16+12*Math.sin(a)).toFixed(1)}" stroke="currentColor" stroke-width="2.5"/>`;
+  }
+  return r+`<circle cx="16" cy="16" r="6" fill="currentColor"/>`;
+}
+
+// ─── Shape definitions ────────────────────────────────────────────────────────
+const PATTERNS = [
+  { id:'default',            label:'Default',         icon: iconSquare() },
+  { id:'circle',             label:'Circle',          icon: iconCircle() },
+  { id:'ellipse',            label:'Ellipse',         icon: iconEllipse() },
+  { id:'rounded',            label:'Rounded',         icon: iconRounded(5) },
+  { id:'diamond',            label:'Diamond',         icon: iconDiamond() },
+  { id:'star',               label:'Star',            icon: iconStar() },
+  { id:'sparkle',            label:'Sparkle',         icon: iconSparkle() },
+  { id:'cross',              label:'Cross',           icon: iconCross() },
+  { id:'plus',               label:'Plus',            icon: iconPlus() },
+  { id:'x',                  label:'X',               icon: iconX() },
+  { id:'heart',              label:'Heart',           icon: iconHeart() },
+  { id:'danger',             label:'Triangle',        icon: iconDanger() },
+  { id:'blob',               label:'Blob',            icon: iconBlob() },
+  { id:'shake',              label:'Shake',           icon: iconShake() },
+  { id:'ribbon',             label:'Ribbon',          icon: iconRibbon() },
+  { id:'oriental',           label:'Oriental',        icon: iconOriental() },
+  { id:'special-circle',     label:'Spl Circle',      icon: iconSpecCircle() },
+  { id:'special-diamond',    label:'Spl Diamond',     icon: iconSpecDiamond() },
+];
+
+const MARKERS = [
+  { id:'default',       label:'Default',       icon: iconFrameSquare() },
+  { id:'rounded',       label:'Rounded',       icon: iconFrameRounded() },
+  { id:'sdoz',          label:'Pill',          icon: iconFrameSdoz() },
+  { id:'circle',        label:'Circle',        icon: iconFrameCircle() },
+  { id:'drop',          label:'Drop',          icon: iconFrameDrop() },
+  { id:'dropeye',       label:'Drop Eye',      icon: iconFrameDropEye() },
+  { id:'leaf',          label:'Leaf',          icon: iconFrameLeaf() },
+  { id:'flower',        label:'Flower',        icon: iconFrameFlower() },
+  { id:'flurry',        label:'Flurry',        icon: iconFrameFlurry() },
+  { id:'squarecircle',  label:'Sq+Circle',     icon: iconFrameSquareCircle() },
+];
+
+const MARKERS_IN = [
+  { id:'default',   label:'Default',   icon: iconSquare() },
+  { id:'circle',    label:'Circle',    icon: iconCircle() },
+  { id:'rounded',   label:'Rounded',   icon: iconRounded(5) },
+  { id:'sdoz',      label:'Pill',      icon: iconRounded(12) },
+  { id:'diamond',   label:'Diamond',   icon: iconDiamond() },
+  { id:'star',      label:'Star',      icon: iconStar() },
+  { id:'cross',     label:'Cross',     icon: iconCross() },
+  { id:'plus',      label:'Plus',      icon: iconPlus() },
+  { id:'x',         label:'X',         icon: iconX() },
+  { id:'heart',     label:'Heart',     icon: iconHeart() },
+  { id:'danger',    label:'Triangle',  icon: iconDanger() },
+  { id:'sun',       label:'Sun',       icon: iconBallSun() },
+  { id:'drop',      label:'Drop',      icon: iconFrameDrop() },
+  { id:'blob',      label:'Blob',      icon: iconBlob() },
+];
+
+// ─── Build picker grids ───────────────────────────────────────────────────────
+function buildGrid(containerId, shapes, selectedId, onSelect) {
+  const grid = document.getElementById(containerId);
+  shapes.forEach(shape => {
+    const el = document.createElement('div');
+    el.className = 'shape-opt' + (shape.id === selectedId ? ' selected' : '');
+    el.title = shape.label;
+    el.innerHTML = `<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style="color:#2A2520">${shape.icon}</svg>`;
+    el.addEventListener('click', () => {
+      grid.querySelectorAll('.shape-opt').forEach(e => e.classList.remove('selected'));
+      el.classList.add('selected');
+      onSelect(shape.id);
+    });
+    grid.appendChild(el);
+  });
+}
+
+buildGrid('pattern-grid',   PATTERNS,   selPattern,   id => { selPattern   = id; });
+buildGrid('marker-grid',    MARKERS,    selMarker,    id => { selMarker    = id; });
+buildGrid('marker-in-grid', MARKERS_IN, selMarkerIn,  id => { selMarkerIn = id; });
+
+// ─── Color controls ───────────────────────────────────────────────────────────
 function isValidHex(h) { return /^#[0-9A-Fa-f]{6}$/.test(h); }
 
 function syncColor(pickerId, hexId, onchange) {
   const picker = document.getElementById(pickerId);
   const hex = document.getElementById(hexId);
-  picker.addEventListener('input', () => {
-    hex.value = picker.value.toUpperCase();
-    if (onchange) onchange(hex.value);
-  });
+  picker.addEventListener('input', () => { hex.value = picker.value.toUpperCase(); if (onchange) onchange(hex.value); });
   hex.addEventListener('input', () => {
     let v = hex.value.startsWith('#') ? hex.value : '#' + hex.value;
     if (isValidHex(v)) picker.value = v;
@@ -367,16 +366,15 @@ function syncColor(pickerId, hexId, onchange) {
   });
 }
 
-syncColor('color-picker', 'color-hex', (val) => {
+syncColor('color-picker', 'color-hex', val => {
   document.getElementById('map-colors').checked = (val === MAP_COLOR);
 });
 syncColor('bg-picker', 'bg-hex', null);
 
 document.getElementById('map-colors').addEventListener('change', function() {
-  if (this.checked) {
-    document.getElementById('color-picker').value = MAP_COLOR;
-    document.getElementById('color-hex').value = MAP_COLOR;
-  }
+  const c = this.checked ? MAP_COLOR : '#000000';
+  document.getElementById('color-picker').value = c;
+  document.getElementById('color-hex').value = c;
 });
 
 document.getElementById('transparent-bg').addEventListener('change', function() {
@@ -386,8 +384,7 @@ document.getElementById('transparent-bg').addEventListener('change', function() 
 });
 
 document.getElementById('logo-input').addEventListener('change', function() {
-  const file = this.files[0];
-  if (!file) return;
+  const file = this.files[0]; if (!file) return;
   document.getElementById('upload-name').textContent = file.name;
   const reader = new FileReader();
   reader.onload = e => { logoDataURL = e.target.result; };
@@ -398,112 +395,348 @@ document.getElementById('logo-size').addEventListener('input', function() {
   document.getElementById('logo-size-val').textContent = this.value + '%';
 });
 
-document.getElementById('qr-input').addEventListener('keydown', e => {
-  if (e.key === 'Enter') generate();
-});
+document.getElementById('qr-input').addEventListener('keydown', e => { if (e.key === 'Enter') generate(); });
 
 function getColor(hexId, pickerId) {
   const h = document.getElementById(hexId).value;
   return isValidHex(h) ? h : document.getElementById(pickerId).value;
 }
 
+// ─── QR matrix via qrcode-generator ──────────────────────────────────────────
+function getMatrix(text) {
+  const qr = qrcode(0, 'H');
+  qr.addData(text);
+  qr.make();
+  const count = qr.getModuleCount();
+  const matrix = [];
+  for (let r = 0; r < count; r++) {
+    matrix[r] = [];
+    for (let c = 0; c < count; c++) {
+      matrix[r][c] = qr.isDark(r, c) ? 1 : 0;
+    }
+  }
+  return { matrix, count };
+}
+
+// ─── Finder pattern detection ─────────────────────────────────────────────────
+// Returns true if [row,col] is inside any of the 3 finder pattern 7x7 zones
+// (including the 1-module separator border around each finder)
+function isFinderZone(r, c, count) {
+  const last = count - 1;
+  // top-left 0..7
+  if (r <= 7 && c <= 7) return true;
+  // top-right
+  if (r <= 7 && c >= last - 7) return true;
+  // bottom-left
+  if (r >= last - 7 && c <= 7) return true;
+  return false;
+}
+
+// ─── Canvas shape drawers ─────────────────────────────────────────────────────
+// All draw a single module cell at pixel (px, py) with size `s`
+
+function drawModuleShape(ctx, shape, px, py, s, color) {
+  ctx.fillStyle = color;
+  ctx.strokeStyle = color;
+  const cx = px + s/2, cy = py + s/2, r = s/2 * 0.92;
+  ctx.beginPath();
+  switch(shape) {
+    case 'circle':
+      ctx.arc(cx, cy, r, 0, Math.PI*2); break;
+    case 'ellipse':
+      ctx.ellipse(cx, cy, r, r*0.6, 0, 0, Math.PI*2); break;
+    case 'rounded':
+      roundedRect(ctx, px+0.5, py+0.5, s-1, s-1, s*0.28); break;
+    case 'diamond':
+      ctx.moveTo(cx, py); ctx.lineTo(px+s, cy); ctx.lineTo(cx, py+s); ctx.lineTo(px, cy); break;
+    case 'star':
+      starPath(ctx, cx, cy, r*0.95, r*0.42, 5); break;
+    case 'sparkle':
+      starPath(ctx, cx, cy, r*0.95, r*0.42, 4); break;
+    case 'cross':
+      const t1=s*0.28;
+      ctx.rect(px+t1, py, s-2*t1, s); ctx.rect(px, py+t1, s, s-2*t1); break;
+    case 'plus':
+      const t2=s*0.32;
+      ctx.rect(px+t2, py, s-2*t2, s); ctx.rect(px, py+t2, s, s-2*t2); break;
+    case 'x':
+      ctx.save(); ctx.translate(cx,cy); ctx.rotate(Math.PI/4); ctx.restore();
+      const t3=s*0.28;
+      ctx.save(); ctx.translate(cx,cy); ctx.rotate(Math.PI/4);
+      ctx.rect(-s/2+t3,-s/2,s-2*t3,s); ctx.rect(-s/2,-s/2+t3,s,s-2*t3);
+      ctx.restore(); break;
+    case 'heart':
+      heartPath(ctx, cx, cy, r); break;
+    case 'danger':
+      ctx.moveTo(cx, py+s*0.05); ctx.lineTo(px+s*0.97, py+s*0.95); ctx.lineTo(px+s*0.03, py+s*0.95); break;
+    case 'blob':
+      ctx.arc(cx, cy, r*0.88, 0, Math.PI*2); break;
+    case 'shake':
+      ctx.save(); ctx.translate(cx,cy); ctx.rotate(0.28);
+      roundedRect(ctx, -s/2*0.9, -s/2*0.9, s*0.9, s*0.9, s*0.18);
+      ctx.restore(); break;
+    case 'ribbon':
+      ribbonPath(ctx, px, py, s); break;
+    case 'oriental':
+      ctx.arc(cx, cy, r*0.7, 0, Math.PI*2); break;
+    case 'special-circle':
+      ctx.arc(cx, cy, r*0.92, 0, Math.PI*2); break;
+    case 'special-diamond':
+      ctx.moveTo(cx, py); ctx.lineTo(px+s, cy); ctx.lineTo(cx, py+s); ctx.lineTo(px, cy); break;
+    default: // square
+      ctx.rect(px, py, s, s);
+  }
+  ctx.fill();
+}
+
+// ─── Eye frame drawers ────────────────────────────────────────────────────────
+// Draws the outer 7x7 frame as a single shape (ring = outer minus inner hole)
+function drawMarker(ctx, shape, ox, oy, ms, color) {
+  ctx.fillStyle = color;
+  const outer = 7*ms, inner = 5*ms, off = ms;
+  ctx.beginPath();
+  switch(shape) {
+    case 'rounded':
+      roundedRect(ctx, ox, oy, outer, outer, ms*1.4);
+      roundedRect(ctx, ox+off, oy+off, inner, inner, ms*0.8, true); break;
+    case 'sdoz':
+      roundedRect(ctx, ox, oy, outer, outer, ms*3);
+      roundedRect(ctx, ox+off, oy+off, inner, inner, ms*2, true); break;
+    case 'circle':
+      ctx.arc(ox+outer/2, oy+outer/2, outer/2, 0, Math.PI*2);
+      ctx.arc(ox+outer/2, oy+outer/2, inner/2, 0, Math.PI*2, true); break;
+    case 'drop':
+      dropFramePath(ctx, ox, oy, outer, false);
+      squareCCW(ctx, ox+off, oy+off, inner); break;
+    case 'dropeye':
+      dropFramePath(ctx, ox, oy, outer, false);
+      squareCCW(ctx, ox+off, oy+off, inner); break;
+    case 'leaf':
+      leafFramePath(ctx, ox, oy, outer);
+      squareCCW(ctx, ox+off, oy+off, inner); break;
+    case 'flower':
+      flowerFramePath(ctx, ox, oy, outer);
+      squareCCW(ctx, ox+off, oy+off, inner); break;
+    case 'flurry':
+      flurryFramePath(ctx, ox, oy, outer);
+      squareCCW(ctx, ox+off, oy+off, inner); break;
+    case 'squarecircle':
+      squareCW(ctx, ox, oy, outer);
+      ctx.arc(ox+outer/2, oy+outer/2, inner/2, 0, Math.PI*2, true); break;
+    default: // square
+      squareCW(ctx, ox, oy, outer);
+      squareCCW(ctx, ox+off, oy+off, inner);
+  }
+  ctx.fill('evenodd');
+}
+
+// ─── Eye ball drawers ─────────────────────────────────────────────────────────
+// Draws the inner 3x3 solid shape
+function drawMarkerIn(ctx, shape, ox, oy, ms, color) {
+  ctx.fillStyle = color;
+  const sz = 3*ms, cx = ox+sz/2, cy = oy+sz/2, r = sz/2*0.88;
+  ctx.beginPath();
+  switch(shape) {
+    case 'circle':
+      ctx.arc(cx, cy, r, 0, Math.PI*2); break;
+    case 'rounded':
+      roundedRect(ctx, ox, oy, sz, sz, ms*0.6); break;
+    case 'sdoz':
+      roundedRect(ctx, ox, oy, sz, sz, ms*1.4); break;
+    case 'diamond':
+      ctx.moveTo(cx, oy); ctx.lineTo(ox+sz, cy); ctx.lineTo(cx, oy+sz); ctx.lineTo(ox, cy); break;
+    case 'star':
+      starPath(ctx, cx, cy, r, r*0.45, 5); break;
+    case 'cross':
+      const tc=sz*0.28; ctx.rect(ox+tc,oy,sz-2*tc,sz); ctx.rect(ox,oy+tc,sz,sz-2*tc); break;
+    case 'plus':
+      const tp=sz*0.32; ctx.rect(ox+tp,oy,sz-2*tp,sz); ctx.rect(ox,oy+tp,sz,sz-2*tp); break;
+    case 'x':
+      ctx.save(); ctx.translate(cx,cy); const tx=sz*0.28;
+      ctx.rotate(Math.PI/4); ctx.rect(-sz/2+tx,-sz/2,sz-2*tx,sz); ctx.rect(-sz/2,-sz/2+tx,sz,sz-2*tx);
+      ctx.restore(); break;
+    case 'heart':
+      heartPath(ctx, cx, cy, r); break;
+    case 'danger':
+      ctx.moveTo(cx, oy+sz*0.05); ctx.lineTo(ox+sz*0.97, oy+sz*0.95); ctx.lineTo(ox+sz*0.03, oy+sz*0.95); break;
+    case 'sun':
+      sunPath(ctx, cx, cy, r); break;
+    case 'drop':
+      dropPath(ctx, cx, cy, r); break;
+    case 'blob':
+      ctx.arc(cx, cy, r*0.88, 0, Math.PI*2); break;
+    default: // square
+      ctx.rect(ox, oy, sz, sz);
+  }
+  ctx.fill();
+}
+
+// ─── Path helpers ─────────────────────────────────────────────────────────────
+function roundedRect(ctx, x, y, w, h, r, ccw=false) {
+  r = Math.min(r, w/2, h/2);
+  if (ccw) {
+    ctx.moveTo(x+r, y);
+    ctx.quadraticCurveTo(x,y,x,y+r); ctx.lineTo(x,y+h-r);
+    ctx.quadraticCurveTo(x,y+h,x+r,y+h); ctx.lineTo(x+w-r,y+h);
+    ctx.quadraticCurveTo(x+w,y+h,x+w,y+h-r); ctx.lineTo(x+w,y+r);
+    ctx.quadraticCurveTo(x+w,y,x+w-r,y); ctx.lineTo(x+r,y);
+  } else {
+    ctx.moveTo(x+r, y);
+    ctx.lineTo(x+w-r,y); ctx.quadraticCurveTo(x+w,y,x+w,y+r);
+    ctx.lineTo(x+w,y+h-r); ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);
+    ctx.lineTo(x+r,y+h); ctx.quadraticCurveTo(x,y+h,x,y+h-r);
+    ctx.lineTo(x,y+r); ctx.quadraticCurveTo(x,y,x+r,y);
+  }
+}
+function squareCW(ctx, x, y, s) {
+  ctx.moveTo(x,y); ctx.lineTo(x+s,y); ctx.lineTo(x+s,y+s); ctx.lineTo(x,y+s); ctx.closePath();
+}
+function squareCCW(ctx, x, y, s) {
+  ctx.moveTo(x,y); ctx.lineTo(x,y+s); ctx.lineTo(x+s,y+s); ctx.lineTo(x+s,y); ctx.closePath();
+}
+function starPath(ctx, cx, cy, or, ir, pts) {
+  for (let i=0; i<pts*2; i++) {
+    const a = (i*Math.PI/pts) - Math.PI/2;
+    const r = i%2===0 ? or : ir;
+    i===0 ? ctx.moveTo(cx+r*Math.cos(a), cy+r*Math.sin(a))
+           : ctx.lineTo(cx+r*Math.cos(a), cy+r*Math.sin(a));
+  }
+  ctx.closePath();
+}
+function heartPath(ctx, cx, cy, r) {
+  const s = r * 0.9;
+  ctx.moveTo(cx, cy+s*0.6);
+  ctx.bezierCurveTo(cx-s*1.3, cy-s*0.3, cx-s*1.3, cy-s*1.1, cx, cy-s*0.3);
+  ctx.bezierCurveTo(cx+s*1.3, cy-s*1.1, cx+s*1.3, cy-s*0.3, cx, cy+s*0.6);
+  ctx.closePath();
+}
+function dropPath(ctx, cx, cy, r) {
+  ctx.arc(cx, cy+r*0.2, r*0.75, 0, Math.PI*2);
+}
+function sunPath(ctx, cx, cy, r) {
+  ctx.arc(cx, cy, r*0.55, 0, Math.PI*2);
+}
+function dropFramePath(ctx, ox, oy, sz, ccw) {
+  const cx=ox+sz/2, cy=oy+sz/2;
+  ctx.moveTo(cx, oy);
+  ctx.bezierCurveTo(ox+sz,oy, ox+sz,oy+sz*0.6, cx,oy+sz*0.95);
+  ctx.bezierCurveTo(ox,oy+sz*0.6, ox,oy, cx,oy);
+  ctx.closePath();
+}
+function leafFramePath(ctx, ox, oy, sz) {
+  ctx.moveTo(ox, oy);
+  ctx.quadraticCurveTo(ox+sz, oy, ox+sz, oy+sz);
+  ctx.quadraticCurveTo(ox, oy+sz, ox, oy);
+  ctx.closePath();
+}
+function flowerFramePath(ctx, ox, oy, sz) {
+  const cx=ox+sz/2, cy=oy+sz/2, r=sz/2;
+  for (let i=0; i<8; i++) {
+    const a=i*Math.PI/4, bx=cx+r*0.6*Math.cos(a), by=cy+r*0.6*Math.sin(a);
+    ctx.moveTo(bx,by); ctx.arc(bx,by,r*0.45,0,Math.PI*2);
+  }
+}
+function flurryFramePath(ctx, ox, oy, sz) {
+  const cx=ox+sz/2, cy=oy+sz/2, r=sz/2;
+  starPath(ctx, cx, cy, r*0.98, r*0.65, 6);
+}
+function ribbonPath(ctx, px, py, s) {
+  ctx.moveTo(px, py); ctx.lineTo(px+s, py);
+  ctx.lineTo(px+s, py+s*0.65); ctx.lineTo(px+s/2, py+s);
+  ctx.lineTo(px, py+s*0.65); ctx.closePath();
+}
+
+// ─── Main render ──────────────────────────────────────────────────────────────
 function renderToCanvas(scale, callback) {
-  const qrSize = QR_SIZE * scale;
-  const padding = PADDING * scale;
-  const total = qrSize + padding * 2;
+  const text = window._qrText;
+  if (!text) return;
 
-  const canvas = document.createElement('canvas');
-  canvas.width = total;
-  canvas.height = total;
-  const ctx = canvas.getContext('2d');
-
-  const darkColor = getColor('color-hex', 'color-picker');
-  const isTransparent = document.getElementById('transparent-bg').checked;
-  const lightColor = isTransparent ? '#ffffff' : getColor('bg-hex', 'bg-picker');
-  const bgFill = isTransparent ? 'rgba(0,0,0,0)' : lightColor;
-
-  const tempDiv = document.createElement('div');
-  tempDiv.style.cssText = 'position:absolute;visibility:hidden;left:-9999px;';
-  document.body.appendChild(tempDiv);
-
-  try {
-    new QRCode(tempDiv, {
-      text: window._qrText,
-      width: qrSize,
-      height: qrSize,
-      colorDark: darkColor,
-      colorLight: lightColor,
-      correctLevel: QRCode.CorrectLevel.H
-    });
-  } catch(e) {
-    document.body.removeChild(tempDiv);
+  let matData;
+  try { matData = getMatrix(text); }
+  catch(e) {
+    document.getElementById('qr-error').textContent = 'Text too long to encode.';
+    document.getElementById('qr-error').style.display = 'block';
     return;
   }
 
-  setTimeout(() => {
-    const srcCanvas = tempDiv.querySelector('canvas');
-    const srcImg = tempDiv.querySelector('img');
+  const { matrix, count } = matData;
+  const qrSize  = QR_SIZE * scale;
+  const padding = PADDING * scale;
+  const total   = qrSize + padding * 2;
+  const ms      = qrSize / count; // module size in px
 
-    const draw = (source) => {
-      if (!isTransparent) {
-        ctx.fillStyle = bgFill;
-        ctx.fillRect(0, 0, total, total);
-        ctx.drawImage(source, padding, padding, qrSize, qrSize);
-      } else {
-        // Render QR to offscreen canvas, then punch out white pixels
-        const offscreen = document.createElement('canvas');
-        offscreen.width = qrSize;
-        offscreen.height = qrSize;
-        const octx = offscreen.getContext('2d');
-        octx.fillStyle = '#ffffff';
-        octx.fillRect(0, 0, qrSize, qrSize);
-        octx.drawImage(source, 0, 0, qrSize, qrSize);
-        const imgData = octx.getImageData(0, 0, qrSize, qrSize);
-        const d = imgData.data;
-        for (let i = 0; i < d.length; i += 4) {
-          if (d[i] > 200 && d[i+1] > 200 && d[i+2] > 200) d[i+3] = 0;
-        }
-        octx.putImageData(imgData, 0, 0);
-        ctx.drawImage(offscreen, padding, padding, qrSize, qrSize);
-      }
+  const canvas = document.createElement('canvas');
+  canvas.width = total; canvas.height = total;
+  const ctx = canvas.getContext('2d');
 
-      if (logoDataURL) {
-        const pct = parseInt(document.getElementById('logo-size').value) / 100;
-        const logoSize = Math.round(qrSize * pct);
-        const lx = padding + (qrSize - logoSize) / 2;
-        const ly = padding + (qrSize - logoSize) / 2;
-        const img = new Image();
-        img.onload = () => {
-          if (!isTransparent) {
-            const pad = 6 * scale;
-            ctx.fillStyle = bgFill;
-            ctx.beginPath();
-            ctx.roundRect(lx - pad, ly - pad, logoSize + pad*2, logoSize + pad*2, 6 * scale);
-            ctx.fill();
-          }
-          ctx.drawImage(img, lx, ly, logoSize, logoSize);
-          document.body.removeChild(tempDiv);
-          callback(canvas);
-        };
-        img.src = logoDataURL;
-      } else {
-        document.body.removeChild(tempDiv);
-        callback(canvas);
-      }
-    };
+  const darkColor  = getColor('color-hex', 'color-picker');
+  const isTransparent = document.getElementById('transparent-bg').checked;
+  const bgColor    = isTransparent ? 'rgba(0,0,0,0)' : getColor('bg-hex', 'bg-picker');
 
-    if (srcCanvas) {
-      draw(srcCanvas);
-    } else if (srcImg && srcImg.src) {
-      const img = new Image();
-      img.onload = () => draw(img);
-      img.src = srcImg.src;
-    } else {
-      document.body.removeChild(tempDiv);
+  // Background
+  if (!isTransparent) { ctx.fillStyle = bgColor; ctx.fillRect(0, 0, total, total); }
+
+  // ── Draw body modules (skip finder zones) ──
+  for (let r = 0; r < count; r++) {
+    for (let c = 0; c < count; c++) {
+      if (isFinderZone(r, c, count)) continue;
+      if (!matrix[r][c]) continue;
+      const px = padding + c * ms;
+      const py = padding + r * ms;
+      drawModuleShape(ctx, selPattern, px, py, ms, darkColor);
     }
-  }, 150);
+  }
+
+  // ── Draw eye frames (3 corners) ──
+  // Finder pattern top-left origin [row, col] for each of 3 finders
+  const finderOrigins = [
+    [0, 0],
+    [0, count - 7],
+    [count - 7, 0]
+  ];
+  finderOrigins.forEach(([fr, fc]) => {
+    const ox = padding + fc * ms;
+    const oy = padding + fr * ms;
+    drawMarker(ctx, selMarker, ox, oy, ms, darkColor);
+  });
+
+  // ── Draw eye balls (3x3 inner solid, offset 2 modules in from finder origin) ──
+  const ballOrigins = [
+    [2, 2],
+    [2, count - 5],
+    [count - 5, 2]
+  ];
+  ballOrigins.forEach(([fr, fc]) => {
+    const ox = padding + fc * ms;
+    const oy = padding + fr * ms;
+    drawMarkerIn(ctx, selMarkerIn, ox, oy, ms, darkColor);
+  });
+
+  // ── Logo overlay ──
+  if (logoDataURL) {
+    const pct = parseInt(document.getElementById('logo-size').value) / 100;
+    const logoSize = Math.round(qrSize * pct);
+    const lx = padding + (qrSize - logoSize) / 2;
+    const ly = padding + (qrSize - logoSize) / 2;
+    const img = new Image();
+    img.onload = () => {
+      if (!isTransparent) {
+        const pad = 6 * scale;
+        ctx.fillStyle = bgColor;
+        ctx.beginPath();
+        roundedRect(ctx, lx-pad, ly-pad, logoSize+pad*2, logoSize+pad*2, 6*scale);
+        ctx.fill();
+      }
+      ctx.drawImage(img, lx, ly, logoSize, logoSize);
+      callback(canvas);
+    };
+    img.src = logoDataURL;
+  } else {
+    callback(canvas);
+  }
 }
 
+// ─── Generate & download ──────────────────────────────────────────────────────
 function generate() {
   const val = document.getElementById('qr-input').value.trim();
   const err = document.getElementById('qr-error');
@@ -512,20 +745,14 @@ function generate() {
 
   err.style.display = 'none';
   output.classList.remove('visible');
-
-  if (!val) {
-    err.textContent = 'Please enter a URL or text first.';
-    err.style.display = 'block';
-    return;
-  }
+  if (!val) { err.textContent = 'Please enter a URL or text first.'; err.style.display = 'block'; return; }
 
   window._qrText = val;
-
   renderToCanvas(1, (canvas) => {
     displayCanvas.width = canvas.width;
     displayCanvas.height = canvas.height;
     const ctx = displayCanvas.getContext('2d');
-    ctx.clearRect(0, 0, displayCanvas.width, displayCanvas.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(canvas, 0, 0);
     output.classList.add('visible');
   });
@@ -537,9 +764,7 @@ function downloadQR(scale) {
     const a = document.createElement('a');
     a.download = scale > 1 ? 'qrcode-large.png' : 'qrcode.png';
     a.href = canvas.toDataURL('image/png');
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
   });
 }
 </script>
